@@ -53,4 +53,4 @@ yarn.lock
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
-docs/404.html
+
