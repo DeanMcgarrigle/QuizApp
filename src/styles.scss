@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Catamaran:300,400,500,600,700|Roboto:100,300,400,500,700|Poppins:200,300,400,500&display=swap");
+
+body,
+html {
+  height: 100%;
+  font-family: "poppins", sans-serif;
+}
+
+.p-tabview {
+  height: 100%;
+}
+
+.p-tabview-panels {
+  padding: 0 !important;
+  height: calc(100% - 60px);
+}
+
+.p-tabview-panel {
+  height: 100%;
+}

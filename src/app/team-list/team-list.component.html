@@ -1,0 +1,26 @@
+<div class="container-fluid h-100 p-4">
+  <div class="row h-100">
+    <div class="col-12" *ngIf="teamList.length > 0">
+      <button pButton pRipple type="button" label="Save Scores" class="p-button-raised me-3" (click)="submitScores()" [disabled]="scoresLocked" ></button>
+      <button pButton pRipple type="button" label="Lock Scores" class="p-button-raised p-button-secondary" (click)="toggleLock()" *ngIf="!scoresLocked"></button>
+      <button pButton pRipple type="button" label="Unlock Scores" class="p-button-raised p-button-secondary" (click)="toggleLock()" *ngIf="scoresLocked"></button>
+    </div>
+    <div class="col-12 mt-4" style="height: calc(100% - 50px); overflow-y: auto; overflow-x: hidden;">
+      <!-- //TODO: ADD A LOCK/UNLOCK BUTTON -->
+      <!-- //TODO: STOP THE SAVING OF SCORES ONCE IT HAS BEEN SAVED -->
+      <!-- //TODO: PERSIST THE SCORES ACROSS REFRESHES -->
+      <!-- //TODO: add a landing page to select which view you want to select -->
+      <!-- //TODO: FORMAT THE SCORES PROPERLY AND DELIVER TO CHART -->
+      <div *ngFor="let team of teamList; let i = index" class="col-12 pb-3">
+        <div class="row align-items-center">
+          <div class="col-6">
+            <p class="m-0 fw-bold">{{ team }}</p>
+          </div>
+          <div class="col-6">
+            <p-inputNumber class="w-100 me-4" [(ngModel)]="teamScores[0][team]" (onInput)="onInput()" [disabled]="scoresLocked"></p-inputNumber>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

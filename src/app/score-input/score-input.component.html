@@ -1,0 +1,62 @@
+<div class="container-fluid h-100 p-4">
+  <div class="row">
+    <div class="col-12 mb-3">
+      <span class="fw-bold">Enter Team name</span>
+    </div>
+    <div class="col" style="height: calc(100% - 230px);">
+      <input
+        type="text"
+        pInputText
+        class="w-75 me-4"
+        [(ngModel)]="newTeamName"
+      />
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Add Team"
+        class="p-button-raised"
+        (click)="addTeam()"
+        [disabled]="newTeamName === ''"
+      ></button>
+    </div>
+    <p-divider class="mt-5 mb-5"></p-divider>
+    <div class="col-12 mb-3">
+      <span class="fw-bold">Teams Added: {{ teamList.length }}</span>
+    </div>
+    <div class="col-12" style="height: calc(100vh - 330px);">
+      <p-tabView>
+        <p-tabPanel header="Round 1">
+          <app-team-list [teamList]="teamList" (roundScore)="onAddScore(1, $event)"></app-team-list>
+        </p-tabPanel>
+        <p-tabPanel header="Round 2">
+          <app-team-list  [teamList]="teamList" (roundScore)="onAddScore(2, $event)"></app-team-list>
+        </p-tabPanel>
+        <p-tabPanel header="Round 3">
+          <app-team-list  [teamList]="teamList" (roundScore)="onAddScore(3, $event)"></app-team-list>
+        </p-tabPanel>
+        <p-tabPanel header="Round 4">
+          <app-team-list  [teamList]="teamList" (roundScore)="onAddScore(4, $event)"></app-team-list>
+        </p-tabPanel>
+        <p-tabPanel header="Round 5">
+          <app-team-list  [teamList]="teamList" (roundScore)="onAddScore(5, $event)"></app-team-list>
+        </p-tabPanel>
+        <p-tabPanel header="Round 6">
+          <app-team-list  [teamList]="teamList" (roundScore)="onAddScore(6, $event)"></app-team-list>
+        </p-tabPanel>
+        <p-tabPanel header="Round 7">
+          <app-team-list  [teamList]="teamList" (roundScore)="onAddScore(7, $event)"></app-team-list>
+        </p-tabPanel>
+        <p-tabPanel header="Round 8"
+          ><app-team-list  [teamList]="teamList" (roundScore)="onAddScore(8, $event)"></app-team-list>
+        </p-tabPanel>
+        <p-tabPanel header="Round 9"
+          ><app-team-list  [teamList]="teamList" (roundScore)="onAddScore(8, $event)"></app-team-list>
+        </p-tabPanel>
+        <p-tabPanel header="Round 10 (bonus)">
+          <app-team-list  [teamList]="teamList" (roundScore)="onAddScore(9, $event)"></app-team-list>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>

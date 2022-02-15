@@ -1,0 +1,17 @@
+:host {
+  .page-container {
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-left: 70px;
+    transition: padding-left 0.2s ease;
+
+    #main-container {
+      height: calc(100vh - 65px);
+      background-color: #f8f9fa;
+    }
+  }
+
+  .side-nav-open {
+    padding-left: 279px;
+  }
+}
