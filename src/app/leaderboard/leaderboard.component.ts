@@ -17,11 +17,13 @@ import { BehaviorSubject } from 'rxjs';
 import uniq from 'lodash-es/uniq';
 import isEmpty from 'lodash-es/isEmpty';
 import { LocalStorageService } from 'ngx-webstorage';
+import { fadeInAnimation } from '../core/_animations/animations';
 
 @Component({
   selector: 'app-leaderboard',
   templateUrl: './leaderboard.component.html',
   styleUrls: ['./leaderboard.component.scss'],
+  animations: [fadeInAnimation],
 })
 export class LeaderboardComponent implements OnInit, AfterViewInit {
   private root: am5.Root | undefined;
@@ -101,6 +103,7 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
 
   chartCreated = false;
   showSplashScreen = true;
+  round = 1;
 
   constructor(
     private storage: LocalStorageService,
@@ -131,6 +134,7 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
       }
 
       let i = 1;
+  
       const holder = {};
       event.data.forEach((e) => {
         holder[`Round ${i}`] = {};
@@ -228,7 +232,7 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
           valueXField: 'value',
           categoryYField: 'network',
           sequencedInterpolation: true,
-          stacked: true
+          stacked: true,
         })
       );
 
@@ -345,6 +349,7 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
       var year = 1;
 
       this.newData.subscribe((data: any) => {
+        this.round = year;
         console.log('year: ', year);
         console.log(data);
         if (!isEmpty(data)) {

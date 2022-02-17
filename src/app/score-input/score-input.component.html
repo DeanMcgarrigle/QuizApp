@@ -51,10 +51,13 @@
           ><app-team-list  [teamList]="teamList" (roundScore)="onAddScore(8, $event)"></app-team-list>
         </p-tabPanel>
         <p-tabPanel header="Round 9"
-          ><app-team-list  [teamList]="teamList" (roundScore)="onAddScore(8, $event)"></app-team-list>
+          ><app-team-list  [teamList]="teamList" (roundScore)="onAddScore(9, $event)"></app-team-list>
         </p-tabPanel>
-        <p-tabPanel header="Round 10 (bonus)">
-          <app-team-list  [teamList]="teamList" (roundScore)="onAddScore(9, $event)"></app-team-list>
+        <p-tabPanel header="Round 10 (bonus 1)">
+          <app-team-list  [teamList]="teamList" (roundScore)="onAddScore(10, $event)"></app-team-list>
+        </p-tabPanel>
+        <p-tabPanel header="Round 11 (bonus 2)">
+          <app-team-list  [teamList]="teamList" (roundScore)="onAddScore(11, $event)"></app-team-list>
         </p-tabPanel>
       </p-tabView>
     </div>
