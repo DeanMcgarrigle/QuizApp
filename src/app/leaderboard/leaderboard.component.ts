@@ -260,12 +260,14 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
           // locationX: 1,
           // locationY: 0.5,
           sprite: am5.Label.new(root, {
-            text: '{categoryY}: [bold]{valueX}[/]',
+            text: '[fontSize: 20px]{categoryY}[/]:  [bold fontSize: 25px]{valueX}[/]',
             fill: root.interfaceColors.get('alternativeText'),
             centerX: am5.percent(50),
             centerY: am5.percent(50),
             populateText: true,
-            fontSize: '20px',
+            oversizedBehavior: 'fit',
+            minScale: 0.4,
+            // fontSize: '25px',
             fontFamily: 'Poppins',
           }),
         });
