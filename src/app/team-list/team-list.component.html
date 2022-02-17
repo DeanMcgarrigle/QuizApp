@@ -2,8 +2,8 @@
   <div class="row h-100">
     <div class="col-12" *ngIf="teamList.length > 0">
       <button pButton pRipple type="button" label="Save Scores" class="p-button-raised me-3" (click)="submitScores()" [disabled]="scoresLocked" ></button>
-      <button pButton pRipple type="button" label="Lock Scores" class="p-button-raised p-button-secondary" (click)="toggleLock()" *ngIf="!scoresLocked"></button>
-      <button pButton pRipple type="button" label="Unlock Scores" class="p-button-raised p-button-secondary" (click)="toggleLock()" *ngIf="scoresLocked"></button>
+      <!-- <button pButton pRipple type="button" label="Lock Scores" class="p-button-raised p-button-secondary" (click)="toggleLock()" *ngIf="!scoresLocked"></button>
+      <button pButton pRipple type="button" label="Unlock Scores" class="p-button-raised p-button-secondary" (click)="toggleLock()" *ngIf="scoresLocked"></button> -->
     </div>
     <div class="col-12 mt-4" style="height: calc(100% - 50px); overflow-y: auto; overflow-x: hidden;">
       <!-- //TODO: ADD A LOCK/UNLOCK BUTTON -->

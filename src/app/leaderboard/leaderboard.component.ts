@@ -267,7 +267,6 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
             populateText: true,
             oversizedBehavior: 'fit',
             minScale: 0.4,
-            // fontSize: '25px',
             fontFamily: 'Poppins',
           }),
         });
