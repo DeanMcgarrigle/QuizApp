@@ -1,8 +1,9 @@
 :host {
   #bg {
-    background-image: url("../../assets/img/mia.png");
+    background-image: url("../../assets/img/chiltern.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
   }
   #gradient {
     background-image: linear-gradient(

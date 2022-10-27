@@ -1,19 +1,14 @@
 <div *ngIf="!showSplashScreen" class="row h-100 m-0">
     <div class="col-12 d-flex align-items-end justify-content-between" style="height: 100px;">
-        <div [@fadeInAnimation] class="ps-5" style="font-size: 50px; font-weight: 300; color: #4e4e4e;">Round: <strong><span style="font-weight: 900; color: #47bef7;">{{round}}</span></strong> <span *ngIf="round > 9"> (bonus)</span></div>
+        <div [@fadeInAnimation] class="ps-5" style="font-size: 50px; font-weight: 300; color: #4e4e4e;">Round:
+            <strong><span style="font-weight: 900; color: #47bef7;">{{round}}</span></strong> <span *ngIf="round > 9">
+                (bonus)</span></div>
     </div>
     <div class="col-12" style="height: calc(100% - 100px);">
         <div id="chartdiv" class="p-4" style="width: 98%; height: 96%; overflow: hidden;"></div>
     </div>
 </div>
 <div *ngIf="showSplashScreen" class="row h-100 w-100 m-0">
-    <div class="col-12 p-0" style="height: 60%" id="bg">
-        <div class="h-100 w-100" id="gradient"></div>
-    </div>
-    <div class="col-12" style="height: 40%">
-        <div class="row h-100 m-0 p-0">
-            <div class="col-12 h-50" id="banner"></div>
-            <div class="col-12 h-50" id="logo"></div>
-        </div>
+    <div class="col-12 p-0 h-100" id="bg">
     </div>
 </div>

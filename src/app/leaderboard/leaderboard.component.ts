@@ -13,6 +13,7 @@ import { isPlatformBrowser } from '@angular/common';
 import * as am5 from '@amcharts/amcharts5';
 import * as am5xy from '@amcharts/amcharts5/xy';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
+import am5themes_Responsive from '@amcharts/amcharts5/themes/Responsive';
 import { BehaviorSubject } from 'rxjs';
 import uniq from 'lodash-es/uniq';
 import isEmpty from 'lodash-es/isEmpty';
@@ -124,7 +125,7 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
     this.channel.addEventListener('message', (event) => {
       console.log(uniq(event.data));
 
-      this.storage.store('scores', uniq(event.data));
+      // this.storage.store('scores', uniq(event.data));
       this.showSplashScreen = false;
       if (!this.chartCreated) {
         setTimeout(() => {
@@ -134,7 +135,7 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
       }
 
       let i = 1;
-  
+
       const holder = {};
       event.data.forEach((e) => {
         holder[`Round ${i}`] = {};
@@ -169,7 +170,11 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
       let root = am5.Root.new('chartdiv');
 
       root.setThemes([am5themes_Animated.new(root)]);
-
+      root.setThemes([am5themes_Responsive.new(root)]);
+     
+      root.numberFormatter.setAll({
+        numberFormat: "#",
+      });
       let chart = root.container.children.push(
         am5xy.XYChart.new(root, {
           panX: true,
@@ -214,7 +219,7 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
           maxDeviation: 0,
           min: 0,
           strictMinMax: true,
-          // extraMax: 0.1,
+          extraMax: 0.02,
           renderer: xRenderer,
           visible: false,
         })
@@ -260,29 +265,33 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
           // locationX: 1,
           // locationY: 0.5,
           sprite: am5.Label.new(root, {
-            text: '[fontSize: 20px]{categoryY}[/]:  [bold fontSize: 25px]{valueX}[/]',
+            // text: '[bold fontSize: 35px]{categoryY}[/] :  [fontSize: 30px]{valueX}[/]',
+            text: '[bold fontSize: 30px]{categoryY}[/]',
             fill: root.interfaceColors.get('alternativeText'),
             centerX: am5.percent(50),
             centerY: am5.percent(50),
             populateText: true,
             oversizedBehavior: 'fit',
-            minScale: 0.4,
+            minScale: 0.5,
+            // maxWidth: 500,
+            // ellipsis: "...",
             fontFamily: 'Poppins',
           }),
         });
       });
 
-      // series.bullets.push(function() {
-      //   return am5.Bullet.new(root, {
-      //     locationX: 1,
-      //     locationY: 0.5,
-      //     sprite: am5.Label.new(root, {
-      //       centerY: am5.p50,
-      //       text: "{value}",
-      //       populateText: true
-      //     })
-      //   });
-      // });
+      series.bullets.push(function () {
+        return am5.Bullet.new(root, {
+          locationX: 1,
+          locationY: 0.5,
+          sprite: am5.Label.new(root, {
+            text: '[bold fontSize: 35px numberFormat: #]{valueX}[/]',
+            centerY: am5.p50,
+            populateText: true,
+            fontFamily: 'Poppins',
+          }),
+        });
+      });
 
       // var label = chart.plotContainer.children.push(
       //   am5.Label.new(root, {
@@ -364,7 +373,7 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
               updateData();
               setTimeout(() => {
                 sortCategoryAxis();
-              }, 2000);
+              }, 4000);
 
               year++;
           }

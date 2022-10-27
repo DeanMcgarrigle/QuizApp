@@ -20,8 +20,23 @@ export class ScoreInputComponent implements OnInit {
 
   ngOnInit(): void {
     const t = this.storage.retrieve('teamList');
-    if(t){
+    console.log(t)
+
+    if (t) {
       this.teamList = t;
+    }
+    const s = this.storage.retrieve('scores');
+    console.log(s);
+    if (s) {
+      this.scores = s;
+      const r = 1;
+      for (let index = 0; index < this.scores.length; index++) {
+        const element = this.scores[index];
+        this.onAddScore(index + 1, [...this.scores[0]]);
+      }
+      // this.scores.forEach((sc) => {
+      //   this.onAddScore(1);
+      // });
     }
   }
 
@@ -34,9 +49,9 @@ export class ScoreInputComponent implements OnInit {
   }
 
   onAddScore(round, score) {
-    // console.log(round, score);
-    this.scores.push(score[0])
+    console.log(round, score);
+    this.scores.push(score[0]);
     // console.log(this.scores)
     this.channel.postMessage(this.scores);
-  } 
+  }
 }
